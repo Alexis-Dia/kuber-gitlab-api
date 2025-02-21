@@ -1,0 +1,96 @@
+stages:
+  - build_and_test
+  - dockerize
+  - deploy
+  - kuber
+
+variables:
+  test_file_remote: /tmp/test_job_remote.txt
+  DOCKER_DIND_IMAGE: docker:latest
+  TARGET_PATH: target/cats-api.jar
+  AGENT_ID: root/kuber-gitlab-api
+  KUBE_CONTEXT: root/k8s-connection:k8s-connection
+
+#test_job_ci_deploy:
+#  stage: kuber
+#  image:
+#    name: bitnami/kubectl:latest
+#    entrypoint: [""]
+#  script:
+#    - echo "Setting up Kubernetes context....."
+#    #    - kubectl config set-credentials agent:6 --token="ci:6:${CI_JOB_TOKEN}"
+#    #    - kubectl config set-cluster gitlab --server="http://172.16.0.116:8088"
+#    #    - kubectl config set-context "$KUBE_CONTEXT" --cluster=gitlab --user="agent:6"
+#    #    - kubectl config get-contexts
+#    - kubectl config use-context $KUBE_CONTEXT:primary-agent
+#    #    - echo "Authenticating with GitLab Container Registry..."
+#    #    - echo "Deploying Docker image to Kubernetes..."
+#    #    - kubectl config view
+#    - kubectl get nodes
+
+
+test_job_ci:
+  stage: build_and_test
+  tags:
+    - test
+  image: alpine:3.18
+  script:
+    - apk add openjdk17
+    - apk add maven
+    - mvn clean install
+    - ls -la
+    - ls -la target
+  artifacts:
+    expire_in: 10 days
+    paths:
+      - $TARGET_PATH
+
+test_job_dockerize:
+  stage: dockerize
+  tags:
+    - test
+  image: alpine:3.18
+  script:
+    - echo $CI_REGISTRY_IMAGE
+    - echo $CI_REGISTRY_USER
+    - echo $CI_REGISTRY_PASSWORD
+    - echo $CI_REGISTRY
+    - apk add docker
+    #- telnet gitlab-site.online 5050
+    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
+    - ls -la
+    - ls -la
+    #- docker build -t "$CI_REGISTRY_IMAGE:${CI_COMMIT_SHA:0:8}" .
+    #- docker push "$CI_REGISTRY_IMAGE:${CI_COMMIT_SHA:0:8}"
+    #- docker login gitlab-site.online:5050
+    - docker build -t gitlab-site.online:5050/root/kuber-gitlab-api .
+    - docker push gitlab-site.online:5050/root/kuber-gitlab-api
+    #- docker push "$CI_REGISTRY_IMAGE:${CI_COMMIT_SHA:0:8}"
+  artifacts:
+    expire_in: 10 days
+    paths:
+      - $TARGET_PATH
+
+test_job_cd:
+  stage: deploy
+  tags:
+    - test
+  image: alpine:3.18
+  script:
+    - ls -la
+
+test_job_ci_deploy:
+  stage: kuber
+  image:
+    name: bitnami/kubectl:latest
+    entrypoint: [""]
+  script:
+    - echo "Setting up Kubernetes context....."
+    - kubectl config use-context $KUBE_CONTEXT
+    - kubectl get nodes
+    - echo "Deployment LOGIN-APP to K8S"
+    - ls $CI_PROJECT_DIR/k8s-files
+    - kubectl apply -f $CI_PROJECT_DIR/k8s-files
+    - kubectl get pods
+    - kubectl get svc
+    - kubectl get svc login-svc #for getting external-ip/cats
