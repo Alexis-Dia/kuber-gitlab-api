@@ -1,0 +1,3 @@
+ci_access:
+  projects:
+    - id: root/kuber-gitlab-api

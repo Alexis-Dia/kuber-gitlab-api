@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: login-app
+  name: login-app
+spec:
+  containers:
+  - image: gitlab-site.online:5050/root/kuber-gitlab-api:latest
+    name: login-app
+    ports:
+      - containerPort: 8080
+    env:
+      - name: SPRING_DATASOURCE_URL
+        value: "jdbc:postgresql://postgres-service:5444/cats-api"
+      - name: SPRING_DATASOURCE_USERNAME
+        value: "admin"
+      - name: SPRING_DATASOURCE_PASSWORD
+        value: "admin"
+  restartPolicy: Always
+  imagePullSecrets:
+    - name: app-secret
+  

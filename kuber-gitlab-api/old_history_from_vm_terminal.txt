@@ -1,0 +1,438 @@
+ls
+    2  for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
+    3  sudo apt-get update
+    4  sudo apt-get install ca-certificates curl
+    5  sudo install -m 0755 -d /etc/apt/keyrings
+    6  sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+    7  sudo chmod a+r /etc/apt/keyrings/docker.asc
+    8  echo   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
+    9    $(. /etc/os-release && echo "$VERSION_CODENAME") stable" |   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   10  sudo apt-get update
+   11  sudo docker version
+   12  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+   13  sudo docker version
+   14  sudo docker compose version
+   15  sudo apt install nginx
+   16  sudo systemctl status nginx
+   17  sudo nano /etc/nginx/sites-available/default 
+   18  sudo nano /etc/nginx/sites-available/default
+   19  sudo systemctl restart nginx
+   20  touch docker-compose.yml
+   21  nano docker-compose.yml 
+   22  sudo docker compose -f docker-compose.yml up -d --build --force-recreate
+   23  sudo nano /etc/nginx/nginx.conf
+   24  sudo systemctl restart nginx
+   25  nano docker-compose.yml 
+   26  sudo docker compose -f docker-compose.yml up -d --build --force-recreate
+   27  nano docker-compose.yml 
+   28  sudo nano /etc/nginx/sites-available/default
+   29  sudo systemctl stop nginx
+   30  sudo systemctl start nginx
+   31  sudo nano /etc/nginx/sites-available/default
+   32  sudo systemctl start nginx
+   33  sudo systemctl restart nginx
+   34  sudo nano /etc/nginx/sites-available/default
+   35  sudo systemctl restart nginx
+   36  sudo nano /etc/nginx/sites-available/default
+   37  sudo systemctl restart nginx
+   38  sudo nano /etc/nginx/sites-available/default
+   39  sudo systemctl restart nginx
+   40  sudo docker ps
+   41  sudo docker -it dd98ff483578 /bin/bash 
+   42  sudo docker exec -it dd98ff483578 /bin/bash 
+   43  docker build -t 0.0.0.0:5001/root/kuber-gitlab-docker -t alexd/cats-api:9.0.0 .
+   44  sudo docker build -t 0.0.0.0:5001/root/kuber-gitlab-docker -t alexd/cats-api:9.0.0 .
+   45  sudo docker ps
+   46  sudo docker images
+   47  sudo docker build -t 0.0.0.0:5001/root/kuber-gitlab-docker -t alexd/cats-api:9.0.1 .
+   48  sudo docker build -t 127.0.0.1:5001/root/kuber-gitlab-docker -t alexd/cats-api:9.0.2 .
+   49  sudo docker images
+   50  sudo docker rmi alexd/cats-api:9.0.0
+   51  sudo docker rmi alexd/cats-api:9.0.1
+   52  sudo docker rmi alexd/cats-api:9.0.2
+   53  sudo docker images
+   54  sudo docker ps
+   55  sudo docker exec -it 82bce6f0f5c5 /bin/bash
+   56  sudo docker ps
+   57  sudo docker exec -it dd98ff483578 /bin/bash
+   58  nano docker-compose.yml 
+   59  touch npm.yml
+   60  nano npm.yml 
+   61  sudo docker compose -f npm.yml up -d
+   62  nano npm.yml 
+   63  sudo docker compose -f npm.yml up -d --build --force-recreate
+   64  sudo docker ps
+   65  sudo docker stop 44c83e45e2b9
+   66  sudo docker stop eede682859f2
+   67  sudo docker ps
+   68  nano docker-compose.yml 
+   69  ls
+   70  sudo nano docker-compose.yml 
+   71  ls
+   72  nano docker-compose.yml 
+   73  pwd
+   74  nano docker-compose.yml 
+   75  mkdir gitlab
+   76  ls gitlab/
+   77  mkdir ./gitlab/ssl
+   78  sudo mkdir ./gitlab/ssl
+   79  cp alex-cloud-lab.online.pem ./gitlab/ssl/
+   80  sudo cp alex-cloud-lab.online.pem ./gitlab/ssl/
+   81  sudo cp alex-cloud-lab.online-key.pem ./gitlab/ssl/
+   82  ls gitlab/ssl/
+   83  nano docker-compose.yml 
+   84  sudo docker compose -f docker-compose.yml up -d --build --force-recreate
+   85  nano docker-compose.yml 
+   86  sudo docker compose -f docker-compose.yml up -d
+   87  sudo docker ps
+   88  sudo docker exec -it 12233cbaf94a /bin/bash
+   89  nano /etc/nginx/sites-available/default
+   90  pws
+   91  pwd
+   92  ls
+   93  nano /etc/nginx/sites-available/default
+   94  sudo nano /etc/nginx/sites-available/default
+   95  sudo systemctl restart nginx
+   96  sudo nano /etc/nginx/sites-available/default
+   97  sudo systemctl restart nginx
+   98  nano /etc/nginx/sites-available/default
+   99  sudo nano /etc/nginx/sites-available/default
+  100  sudo systemctl restart nginx
+  101  sudo nano /etc/nginx/sites-available/default
+  102  sudo docker compose -f npm.yml up -d --build --force-recreate
+  103  sudo systemctl restart nginx
+  104  sudo nano /etc/nginx/sites-available/default
+  105  sudo nano npm.yml 
+  106  journalctl -xeu nginx.service
+  107  sudo nano npm.yml 
+  108  sudo nano /etc/nginx/sites-available/default
+  109  sudo nano npm.yml 
+  110  sudo systemctl restart nginx
+  111  sudo nano npm.yml 
+  112  sudo nano /etc/nginx/sites-available/default
+  113  sudo nano npm.yml 
+  114  sudo systemctl restart nginx
+  115  sudo nano /etc/nginx/sites-available/default
+  116  sudo systemctl restart nginx
+  117  sudo docker ps
+  118  sudo docker stop b92abe826e63
+  119  sudo docker stop c1dee3701a8d
+  120  sudo docker ps
+  121  sudo nano /etc/nginx/sites-available/default
+  122  sudo systemctl restart nginx
+  123  sudo docker compose -f npm.yml up -d --build --force-recreate
+  124  sudo nano /etc/nginx/sites-available/default
+  125  sudo systemctl restart nginx
+  126  sudo nano /etc/nginx/sites-available/default
+  127  sudo systemctl restart nginx
+  128  sudo nano /etc/nginx/sites-available/default
+  129  sudo systemctl restart nginx
+  130  sudo nano /etc/nginx/sites-available/default
+  131  sudo systemctl restart nginx
+  132  sudo nano /etc/nginx/sites-available/default
+  133  sudo systemctl restart nginx
+  134  sudo docker ps
+  135  sudo docker stop 30c6aad078ca
+  136  sudo docker stop 80b84d4dd416
+  137  sudo docker ps
+  138  sudo apt install python3 python3-venv libaugeas0
+  139  sudo python3 -m venv /opt/certbot/
+  140  sudo /opt/certbot/bin/pip install --upgrade pip
+  141  sudo /opt/certbot/bin/pip install certbot certbot-nginx
+  142  sudo ln -s /opt/certbot/bin/certbot /usr/bin/certbot
+  143  sudo certbot certonly --nginx
+  144  sudo nano /etc/nginx/sites-available/default
+  145  sudo systemctl restart nginx
+  146  sudo nano /etc/nginx/sites-available/default
+  147  sudo systemctl restart nginx
+  148  sudo nano /etc/nginx/sites-available/default
+  149  sudo systemctl restart nginx
+  150  sudo nano /etc/nginx/sites-available/default
+  151  sudo systemctl restart nginx
+  152  sudo nano /etc/nginx/sites-available/default
+  153  sudo systemctl restart nginx
+  154  sudo nano /etc/nginx/sites-available/default
+  155  sudo systemctl restart nginx
+  156  sudo nano /etc/nginx/sites-available/default
+  157  sudo systemctl restart nginx
+  158  sudo nano /etc/nginx/sites-available/default
+  159  sudo systemctl restart nginx
+  160  sudo nano /etc/nginx/sites-available/default
+  161  sudo certbot --nginx
+  162  sudo nano /etc/nginx/sites-available/default
+  163  sudo systemctl restart nginx
+  164  sudo nano /etc/nginx/sites-available/default
+  165  sudo docker compose -f docker-compose.yml up -d --build --force-recreate
+  166  sudo nano /etc/nginx/sites-available/default
+  167  sudo systemctl restart nginx
+  168  sudo nano /etc/nginx/sites-available/default
+  169  sudo systemctl restart nginx
+  170  sudo nano /etc/nginx/sites-available/default
+  171  sudo systemctl restart nginx
+  172  sudo nano /etc/nginx/sites-available/default
+  173  sudo systemctl restart nginx
+  174  sudo nano /etc/nginx/sites-available/default
+  175  sudo systemctl restart nginx
+  176  sudo nano /etc/nginx/sites-available/default
+  177  sudo systemctl restart nginx
+  178  sudo docker ps
+  179  sudo docker exec -it 3f0bffa869fa /bin/bash
+  180  sudo nano /etc/nginx/sites-available/default
+  181  sudo systemctl restart nginx
+  182  sudo nano /etc/nginx/sites-available/default
+  183  sudo systemctl restart nginx
+  184  sudo nano docker-compose.yml 
+  185  sudo docker compose -f docker-compose.yml up -d --build --force-recreate
+  186  sudo nano docker-compose.yml 
+  187  sudo docker compose -f docker-compose.yml up -d --build --force-recreate
+  188  sudo nano docker-compose.yml 
+  189  sudo docker compose -f docker-compose.yml up -d --build --force-recreate
+  190  sudo nano docker-compose.yml 
+  191  sudo docker compose -f docker-compose.yml up -d --build --force-recreate
+  192  helm upgrade --install primary-agent gitlab/gitlab-agent       --namespace gitlab-agent-primary-agent       --create-namespace       --set image.tag=v17.6.1       --set config.token=glagent-tY_4pWGqKX3xzwYYjBFx61sruk5m9Kk1_SELmjnYX1vmJWnABQ       --set config.kasAddress=wss://alex-cloud-lab.online//-/kubernetes-agent/
+  193  sudo nano docker-compose.yml 
+  194  sudo docker compose -f docker-compose.yml up -d --build --force-recreate
+  195  sudo nano docker-compose.yml 
+  196  sudo docker compose -f docker-compose.yml up -d --build --force-recreate
+  197  sudo nano docker-compose.yml 
+  198  sudo docker compose -f docker-compose.yml up -d --build --force-recreate
+  199  sudo nano docker-compose.yml 
+  200  sudo docker compose -f docker-compose.yml up -d --build --force-recreate
+  201  sudo nano docker-compose.yml 
+  202  sudo docker compose -f docker-compose.yml up -d --build --force-recreate
+  203  sudo nano docker-compose.yml 
+  204  sudo docker compose -f docker-compose.yml up -d --build --force-recreate
+  205  sudo nano docker-compose.yml 
+  206  sudo docker ps
+  207  sudo docker exec -it d4399a7433f2 /bin/bash
+  208  sudo nano docker-compose.yml 
+  209  sudo docker compose -f docker-compose.yml up -d --build --force-recreate
+  210  sudo nano docker-compose.yml 
+  211  sudo docker compose -f docker-compose.yml up -d --build --force-recreate
+  212  sudo docker exec -it d4399a7433f2 /bin/bash
+  213  sudo docker ps
+  214  sudo docker exec -it 3712019ec721 /bin/bash
+  215  sudo nano docker-compose.yml 
+  216  sudo docker compose -f docker-compose.yml up -d --build --force-recreate
+  217  sudo nano docker-compose.yml 
+  218  sudo docker compose -f docker-compose.yml up -d --build --force-recreate
+  219  docker run -d   --name=wg-easy   -e WG_HOST=34.88.176.253   -e PASSWORD=aUjrKo9fC7   -v ~/.wg-easy:/etc/wireguard   -p 51820:51820/udp   -p 51821:51821/tcp   --cap-add=NET_ADMIN   --cap-add=SYS_MODULE   --sysctl="net.ipv4.conf.all.src_valid_mark=1"   --sysctl="net.ipv4.ip_forward=1"   --restart unless-stopped   weejewel/wg-easy
+  220  sudo docker run -d   --name=wg-easy   -e WG_HOST=34.88.176.253   -e PASSWORD=aUjrKo9fC7   -v ~/.wg-easy:/etc/wireguard   -p 51820:51820/udp   -p 51821:51821/tcp   --cap-add=NET_ADMIN   --cap-add=SYS_MODULE   --sysctl="net.ipv4.conf.all.src_valid_mark=1"   --sysctl="net.ipv4.ip_forward=1"   --restart unless-stopped   weejewel/wg-easy
+  221  docker ps
+  222  sudo docker ps
+  223  ping http://54.39.21.64:51821/
+  224  ping http://54.39.21.64:51821
+  225  sudo docker ps
+  226  ls -la
+  227  pwd
+  228  sudo docker stop 72bb488f32bb
+  229  sudo docker ps
+  230  history
+  231  sudo docker ps
+  232  sudo docker ps -a
+  233  sudo docker ps
+  234  sudo docker stop 96e0a5fe8d23
+  235  sudo docker stop 38c0c8384ff7
+  236  sudo docker ps
+  237  sudo apt-get update
+  238  sudo apt-get install -y curl openssh-server ca-certificates perl
+  239  sudo apt-get install -y postfix
+  240  curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
+  241  sudo EXTERNAL_URL="https://alex-cloud-lab.online" apt-get install gitlab-ce
+  242  history
+  243  sudo gitlab-rake gitlab:env:info
+  244  sudo gitlab -v
+  245  sudo gitlab -version
+  246  sudo gitlab --version
+  247  history
+  248  gitlab-rake gitlab:env: info
+  249  sudo gitlab-rake gitlab:env: info
+  250  sudo gitlab-rake gitlab:env:info
+  251  cat /etc/gitlab/initial_root_password
+  252  sudo cat /etc/gitlab/initial_root_password
+  253  sudo systemctl stop nginx
+  254  sudo systemctl status nginx
+  255  sudo nano /etc/gitlab/gitlab.rb
+  256  sudo vi /etc/gitlab/gitlab.rb
+  257  sudo vi -n /etc/gitlab/gitlab.rb
+  258  sudo vi /etc/gitlab/gitlab.rb
+  259  sudo rm /etc/gitlab/.gitlab.rb.swp
+  260  sudo vi /etc/gitlab/gitlab.rb
+  261  sudo gitlab-ctl reconfigure
+  262  sudo vi /etc/gitlab/gitlab.rb
+  263  sudo gitlab-ctl reconfigure
+  264  sudo vi /etc/gitlab/gitlab.rb
+  265  ls -la
+  266  sudo cp alex-cloud-lab.online.pem alex-cloud-lab.online-key.pem /etc/gitlab/ssl/
+  267  ls -la /etc/gitlab/ssl/
+  268  sudo gitlab-ctl reconfigure
+  269  ls -la /etc/gitlab/ssl/
+  270  rm /etc/gitlab/ssl/alex-cloud-lab.online.key
+  271  sudo rm /etc/gitlab/ssl/alex-cloud-lab.online.key
+  272  sudo rm /etc/gitlab/ssl/alex-cloud-lab.online.pem 
+  273  sudo rm /etc/gitlab/ssl/alex-cloud-lab.online.key-staging 
+  274  sudo rm /etc/gitlab/ssl/alex-cloud-lab.online.crt
+  275  ls -la /etc/gitlab/ssl/
+  276  sudo cp alex-cloud-lab.online.pem alex-cloud-lab.online-key.pem /etc/gitlab/ssl/
+  277  ls -la /etc/gitlab/ssl/
+  278  sudo rm /etc/gitlab/ssl/alex-cloud-lab.online.pem 
+  279  sudo rm /etc/gitlab/ssl/alex-cloud-lab.online-key.pem 
+  280  ls -la /etc/gitlab/ssl/
+  281  sudo rm /etc/gitlab/ssl/letsencrypt_account_private_key.pem 
+  282  ls -la /etc/gitlab/ssl/
+  283  sudo cp alex-cloud-lab.online.pem alex-cloud-lab.online-key.pem /etc/gitlab/ssl/
+  284  ls -la /etc/gitlab/ssl/
+  285  sudo gitlab-ctl reconfigure
+  286  ls -la /etc/gitlab/ssl/
+  287  cp /etc/gitlab/ssl/alex-cloud-lab.online-key.pem /etc/gitlab/ssl/alex-cloud-lab.online.key
+  288  sudo cp /etc/gitlab/ssl/alex-cloud-lab.online-key.pem /etc/gitlab/ssl/alex-cloud-lab.online.key
+  289  sudo cp /etc/gitlab/ssl/alex-cloud-lab.online.pem /etc/gitlab/ssl/alex-cloud-lab.online.crt
+  290  ls -la /etc/gitlab/ssl/
+  291  sudo gitlab-ctl reconfigure
+  292  sudo vi /etc/gitlab/gitlab.rb
+  293  ls -la /etc/gitlab/ssl/
+  294  sudo vi /etc/gitlab/gitlab.rb
+  295  ls -la /etc/gitlab/ssl/
+  296  sudo vi /etc/gitlab/gitlab.rb
+  297  sudo chmod 755 /etc/gitlab/ssl
+  298  sudo gitlab-ctl reconfigure
+  299  sudo systemctl start nginx
+  300  systemctl status nginx.service
+  301  sudo gitlab-ctl stop
+  302  sudo systemctl start nginx
+  303  sudo systemctl status nginx
+  304  sudo docker-compose -f docker-compose.yml up -d --build --force-recreate
+  305  sudo docker compose -f docker-compose.yml up -d --build --force-recreate
+  306  sudo docker ps
+  307  sudo docker stop bcfb4c37ebca
+  308  sudo docker stop c15830763856
+  309  sudo docker ps
+  310  sudo systemctl stop nginx
+  311  sudo gitlab-ctl start
+  312  sudo gitlab-ctl status
+  313  sudo gitlab-ctl stop
+  314  sudo gitlab-ctl uninstall 
+  315  sudo gitlab-ctl cleanse
+  316  sudo vi /etc/gitlab/gitlab.rb
+  317  ls 
+  318  sudo gitlab-ctl status
+  319  gitlab-ctl status
+  320  sudo EXTERNAL_URL="https://git-cloud.online/" apt-get install gitlab-ce
+  321  sudo gitlab-ctl status
+  322  dig git-cloud.online
+  323  sudo EXTERNAL_URL="https://git-cloud.online" apt-get reinstall gitlab-ce
+  324  sudo vi /etc/gitlab/gitlab.rb
+  325  sudo gitlab-ctl reconfigure
+  326  sudo gitlab-ctl stop
+  327  sudo gitlab-ctl uninstall
+  328  sudo gitlab-ctl cleanse
+  329  sudo gitlab-ctl remove-accounts
+  330  sudo EXTERNAL_URL="https://git-cloud.online" apt-get install gitlab-ce
+  331  sudo gitlab-ctl stop
+  332  sudo gitlab-ctl uninstall
+  333  sudo gitlab-ctl cleanse
+  334  sudo rm -rf /opt/gitlab
+  335  sudo rm -rf /var/opt/gitlab
+  336  sudo rm -rf /etc/gitlab
+  337  sudo rm -rf /var/log/gitlab
+  338  sudo EXTERNAL_URL="https://git-cloud.online" apt-get install gitlab-ce
+  339  sudo apt-get update
+  340  curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
+  341  sudo EXTERNAL_URL="https://git-cloud.online" apt-get install gitlab-ce
+  342  sudo vi /etc/gitlab/gitlab.rb
+  343  sudo ls /etc/gitlab/
+  344  sudo ls /etc
+  345  sudo ls -la /etc/gitlab/gitlab.rb 
+  346  sudo touch /etc/gitlab/gitlab.rb
+  347  sudo EXTERNAL_URL="https://git-cloud.online" apt-get install gitlab-ce
+  348  sudo apt-get update
+  349  sudo EXTERNAL_URL="https://git-cloud.online" apt-get install gitlab-ce
+  350  sudo dpkg -P gitlab-ce
+  351  sudo EXTERNAL_URL="https://git-cloud.online" apt-get install gitlab-ce
+  352  sudo gitlab-ctl stop
+  353  sudo gitlab-ctl uninstall
+  354  sudo gitlab-ctl cleanse
+  355  sudo dpkg -P gitlab-ce
+  356  sudo EXTERNAL_URL="https://git-club.online" apt-get install gitlab-ce
+  357  sudo cat /etc/gitlab/initial_root_password
+  358  sudo apt-get install git
+  359  git --version
+  360  # Download the binary for your system
+  361  sudo curl -L --output /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64
+  362  # Give it permission to execute
+  363  sudo chmod +x /usr/local/bin/gitlab-runner
+  364  # Create a GitLab Runner user
+  365  sudo useradd --comment 'GitLab Runner' --create-home gitlab-runner --shell /bin/bash
+  366  # Install and run as a service
+  367  sudo gitlab-runner install --user=gitlab-runner --working-directory=/home/gitlab-runner
+  368  sudo gitlab-runner start
+  369  sudo gitlab-runner register  --url https://git-club.online  --token glrt-t3_ATV5qbEGFwXnAstYvaq9
+  370  sudo gitlab-runner status
+  371  gitlab-runner register  --url https://git-club.online  --token glrt-t3_44dhQ7oeXqkFdLYeh8uS
+  372  sudo gitlab-runner register  --url https://git-club.online  --token glrt-t3_FpyFmvd5xy6rZda9nrvX
+  373  vi /etc/gitlab-runner/config.toml
+  374  sudo vi /etc/gitlab-runner/config.toml
+  375  sudo gitlab-runner status
+  376  sudo gitlab-runner stop
+  377  sudo gitlab-runner status
+  378  sudo gitlab-runner start
+  379  sudo vi /etc/gitlab-runner/config.toml
+  380  sudo gitlab-runner stop
+  381  sudo gitlab-runner start
+  382  sudo gitlab-ctl reconfigure
+  383  sudo nano /etc/resolv.conf 
+  384  history
+  385  sudo gitlab-runner register  --url https://git-club.online  --token glrt-t3_L7dqs_tEb-2er_ZDpFtC
+  386  sudo gitlab-runner register  --url https://git-club.online  --token glrt-t3_sse5PdoMnqgfQ4VcLPsU
+  387  sudo vi /etc/gitlab-runner/config.toml
+  388  sudo nano /etc/gitlab-runner/config.toml
+  389  git config --global --unset http.proxy
+  390  sudo vi /etc/gitlab/gitlab.rb
+  391  sudo nano /etc/gitlab-runner/config.toml
+  392  sudo nano /etc/resolv.conf 
+  393  sudo resolvectl status
+  394  ls
+  395  history
+  396  gitlab-runner register  --url https://git-club.online  --token glrt-t3_1CfJfh2QVVJnYazPatBV
+  397  sudo gitlab-runner register  --url https://git-club.online  --token glrt-t3_CL4VDUzsy5nRkqa4NoWX
+  398  history
+  399  docker images
+  400  sudo docker images
+  401  sudo docekr ps
+  402  sudo docker ps
+  403  sudo gitlab-runner register
+  404  sudo nano /etc/gitlab-runner/config.toml
+  405  history
+  406  sudo nano /etc/gitlab-runner/config.toml
+  407  git remote add origin https://git-club.online/root/gcp-kuber-gitlab-docker.git
+  408  git status
+  409  git remote set-url origin https://git-club.online/root/gcp-kuber-gitlab-docker.git
+  410  ls'
+  411  '
+  412  ls
+  413  git --version
+  414  sudo nano /etc/gitlab-runner/config.toml
+  415  history
+  416  sudo nano /etc/gitlab-runner/config.toml
+  417  sudo vi /etc/gitlab-runner/config.toml
+  418  docker ps -a
+  419  sudo docker ps -a
+  420  sudo docker stop c15830763856
+  421  sudo docker ps -a
+  422  sudo docker ps
+  423  gitlab-runner
+  424  gitlab-runner --version
+  425  sudo nano /etc/gitlab-runner/config.toml
+  426  nano /etc/resolv.conf 
+  427  nano nano /etc/resolv.conf 
+  428  sudo nano /etc/resolv.conf 
+  429  sudo nano /etc/gitlab-runner/config.toml
+  430  sudo nano /etc/resolv.conf 
+  431  sudo nano /etc/gitlab-runner/config.toml
+  432  sudo nano /etc/resolv.conf 
+  433  sudo gitlab-ctl reconfigure
+  434  ls la
+  435  ls -la
+  436  sudo vi /etc/gitlab-runner/config.toml
+  437  sudo vi /etc/gitlab/gitlab.rb
+  438  history
