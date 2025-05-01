@@ -17,7 +17,7 @@ CREATING A VM INSTANCE IN GCP:
 
 
 CREATING A DNS ROW IN THE HOSTER.BY:
-
+    https://elinext-ai-gitlab.tech/
 
 
 CONNECTING A DNS ROW IN THE HOSTER.BY WITH GCP:
@@ -26,7 +26,7 @@ CONNECTING A DNS ROW IN THE HOSTER.BY WITH GCP:
 
 
 INSTALLING GITLAB-CE IN A VM INSTANCE IN GCP + RUNNER:
-    1. https://www.youtube.com/watch?v=TftSa_xJKXM&ab_channel=ADV-IT
+    1. https://www.youtube.com/watch?v=TftSa_xJKXM&ab_channel=ADV-IT (у меня все ok работало на - GitLab Community Edition v17.8.1)
     2. https://www.youtube.com/watch?v=xFSLFF2wQDs&t=301s&ab_channel=ADV-IT
     VIDEO - ~/Gitlab/10-02-2025/videos how to do all/cloud-dns-record.mov
 
@@ -101,7 +101,8 @@ INSTALLING AGENT https://www.youtube.com/watch?v=fwtxi_BRmt0&ab_channel=be-devop
     kubectl apply -f loginsvc-loadbalancer.yaml
 
 
-
+CHECKING THAT EVRTH IS WORKING AS EXPECTED:
+    - connect to kluster in 'Google Cloud SDK Shell' and run this command - 'kubectl get svc login-svc' to know IP and use     {external-ip}/cats or go to .gitlab-ci.yml file and then check IP in pipeline
 
 
 
