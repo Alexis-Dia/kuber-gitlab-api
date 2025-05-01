@@ -6,7 +6,7 @@ metadata:
   name: login-app
 spec:
   containers:
-  - image: gitlab-site.online:5050/root/kuber-gitlab-api:latest
+  - image: elinext-ai-gitlab.tech:5050/root/kuber-gitlab-api:latest
     name: login-app
     ports:
       - containerPort: 8080
