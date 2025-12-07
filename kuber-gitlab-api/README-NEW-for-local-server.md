@@ -22,29 +22,43 @@ THIS READ-ME IS WRITTEN ONLY FOR LOCAL SERVER USAGE WITH PUBLIC IPV4 ADDRESS
     ADV-IT - https://www.youtube.com/watch?v=WflvuVPvCL8 - GitLab CI/CD - Как работают Runners, Установка своего SHELL GitLab Runner на Linux и Windows
     Mihail Kozlov - https://www.youtube.com/watch?v=uSTOerrWNaY&t=1s - GitLab CI/CD Runner простой проект
     Build With LaL - https://www.youtube.com/watch?v=Rvh7OZbDJ_o&t=577s - Register Docker Runner/Executor with GitLab Server to Run Pipelines
-    gitlab-runner register  --url http://93.84.96.137 --token glrt-IzO2G358ecpJnAlIztTWGG86MQpwOjMKdDozCnU6MQ8.01.1707nra3l
+    
+    - создай раннер в созданном проекте - kuber-gitlab-api
+        Install GitLab Runner будет - в самом гитлабе инфа:
+            # Download the binary for your system
+                sudo curl -L --output /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64
+            # Give it permission to execute
+                sudo chmod +x /usr/local/bin/gitlab-runner
+            # Create a GitLab Runner user
+                sudo useradd --comment 'GitLab Runner' --create-home gitlab-runner --shell /bin/bash
+            # Install and run as a service
+                sudo gitlab-runner install --user=gitlab-runner --working-directory=/home/gitlab-runner
+                sudo gitlab-runner start
+        gitlab-runner register  --url http://93.84.96.137 --token glrt-IzO2G358ecpJnAlIztTWGG86MQpwOjMKdDozCnU6MQ8.01.1707nra3l
 
-    scp trump@93.84.96.137:/etc/gitlab-runner/config.toml C:/test (на самом деле надо скопировать в /home/trump/ и затем - scp trump@93.84.96.137:/home/trump/config.toml C:/test)
-    sudo gitlab-ctl reconfigure
-    sudo gitlab-ctl restart
+    этими командами я скачал gitlab.rb, config.toml, тебе они не нужны, но для истории оставлю:
+        scp trump@93.84.96.137:/etc/gitlab-runner/config.toml C:/test (на самом деле надо скопировать в /home/trump/ и затем - scp trump@93.84.96.137:/home/trump/config.toml C:/test)
+        scp trump@93.84.96.137:/home/trump/gitlab.rb C:/test (на самом деле надо скопировать в /home/trump/ и затем - scp trump@93.84.96.137:/etc/gitlab/gitlab.rb C:/test)
 
-    scp trump@93.84.96.137:/home/trump/gitlab.rb C:/test (на самом деле надо скопировать в /home/trump/ и затем - scp trump@93.84.96.137:/etc/gitlab/gitlab.rb C:/test)
-    sudo systemctl restart gitlab-runner
-
-    скопируй полностью содержимое трех файлов с files-to-change/for-local-server-hp-proliant-dl180 - .gitlab-ci.yml, gitlab.rb, config.toml
+    - скопируй полностью содержимое трех файлов с files-to-change/for-local-server-hp-proliant-dl180 - .gitlab-ci.yml, gitlab.rb, config.toml
         .gitlab-ci.yml - полностью замени, а gitlab.rb, config.toml - скопируй настройки
 
-    Install + start Docker
-        sudo apt update
-        sudo apt install -y docker.io
-        sudo systemctl enable --now docker
-        sudo systemctl status docker --no-pager
-    Give gitlab-runner access to the Docker socket
-        sudo usermod -aG docker gitlab-runner
+    - после изменения .gitlab-ci.yml, gitlab.rb, config.toml примени:
+        sudo gitlab-ctl reconfigure
+        sudo gitlab-ctl restart
         sudo systemctl restart gitlab-runner
-    Verify
-        sudo -u gitlab-runner docker info
-        ls -l /var/run/docker.sock`
+
+    - Install + start Docker
+            sudo apt update
+            sudo apt install -y docker.io
+            sudo systemctl enable --now docker
+            sudo systemctl status docker --no-pager
+        Give gitlab-runner access to the Docker socket
+            sudo usermod -aG docker gitlab-runner
+            sudo systemctl restart gitlab-runner
+        Verify
+            sudo -u gitlab-runner docker info
+            ls -l /var/run/docker.sock`
 
 4. CREATING A KUBERNET CLUSTER IN GCP
     be-devops https://www.youtube.com/watch?v=fwtxi_BRmt0&ab_channel=be-devops How to Build and Deploy an app on Kubernetes by GitLab ci cd pipeline:
