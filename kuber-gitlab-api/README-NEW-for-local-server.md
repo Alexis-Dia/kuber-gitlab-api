@@ -36,10 +36,6 @@ THIS READ-ME IS WRITTEN ONLY FOR LOCAL SERVER USAGE WITH PUBLIC IPV4 ADDRESS
                 sudo gitlab-runner start
         gitlab-runner register  --url http://93.84.96.137 --token glrt-IzO2G358ecpJnAlIztTWGG86MQpwOjMKdDozCnU6MQ8.01.1707nra3l
 
-    этими командами я скачал gitlab.rb, config.toml, тебе они не нужны, но для истории оставлю:
-        scp trump@93.84.96.137:/etc/gitlab-runner/config.toml C:/test (на самом деле надо скопировать в /home/trump/ и затем - scp trump@93.84.96.137:/home/trump/config.toml C:/test)
-        scp trump@93.84.96.137:/home/trump/gitlab.rb C:/test (на самом деле надо скопировать в /home/trump/ и затем - scp trump@93.84.96.137:/etc/gitlab/gitlab.rb C:/test)
-
     - скопируй полностью содержимое трех файлов с files-to-change/for-local-server-hp-proliant-dl180 - .gitlab-ci.yml, gitlab.rb, config.toml
         .gitlab-ci.yml - полностью замени, а gitlab.rb, config.toml - скопируй настройки
 
@@ -47,6 +43,16 @@ THIS READ-ME IS WRITTEN ONLY FOR LOCAL SERVER USAGE WITH PUBLIC IPV4 ADDRESS
         sudo gitlab-ctl reconfigure
         sudo gitlab-ctl restart
         sudo systemctl restart gitlab-runner
+
+    - Container Registry
+        ты настроил уже если добавил в gitlab.rb вот эти настройки:
+            registry_external_url 'http://192.168.1.3:5050'
+            gitlab_rails['registry_enabled'] = true
+            registry['enable'] = true
+            registry_nginx['enable'] = true
+            registry_nginx['listen_port'] = 5050
+            registry_nginx['listen_https'] = false
+            registry['token_realm'] = 'http://192.168.1.3'
 
     - Install + start Docker
             sudo apt update
@@ -59,6 +65,11 @@ THIS READ-ME IS WRITTEN ONLY FOR LOCAL SERVER USAGE WITH PUBLIC IPV4 ADDRESS
         Verify
             sudo -u gitlab-runner docker info
             ls -l /var/run/docker.sock`
+   
+    - PS:
+       этими командами я скачал gitlab.rb, config.toml, тебе они не нужны, но для истории оставлю:
+           scp trump@93.84.96.137:/etc/gitlab-runner/config.toml C:/test (на самом деле надо скопировать в /home/trump/ и затем - scp trump@93.84.96.137:/home/trump/config.toml C:/test)
+           scp trump@93.84.96.137:/home/trump/gitlab.rb C:/test (на самом деле надо скопировать в /home/trump/ и затем - scp trump@93.84.96.137:/etc/gitlab/gitlab.rb C:/test)
 
 4. CREATING A KUBERNET CLUSTER IN GCP
     be-devops https://www.youtube.com/watch?v=fwtxi_BRmt0&ab_channel=be-devops How to Build and Deploy an app on Kubernetes by GitLab ci cd pipeline:
