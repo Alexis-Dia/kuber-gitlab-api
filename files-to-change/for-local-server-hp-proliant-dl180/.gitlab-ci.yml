@@ -9,7 +9,7 @@ variables:
   DOCKER_DIND_IMAGE: docker:latest
   TARGET_PATH: target/cats-api.jar
   AGENT_ID: root/kuber-gitlab-api
-  KUBE_CONTEXT: root/k8s-connection:k8s-connection2
+  KUBE_CONTEXT: root/k8s-connection:k8s-connection
 
 #test_job_ci_deploy:
 #  stage: kuber
