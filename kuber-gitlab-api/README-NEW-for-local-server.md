@@ -18,7 +18,7 @@ THIS READ-ME IS WRITTEN ONLY FOR LOCAL SERVER USAGE WITH PUBLIC IPV4 ADDRESS
     sudo EXTERNAL_URL="http://93.84.96.137" GITLAB_ROOT_PASSWORD="Yx/jHR4vtZaFUXAaH6dncc8wx3r2GDfkoYxeLc+A2S7=" apt install gitlab-ce=17.8.1
         cat /etc/gitlab/initial_root_password - Yx/jHR4vtZaFUXAaH6dncc8wx3r2GDfkoYxeLc+A2S4=
 
-3. runner
+3. runner + registry
     ADV-IT - https://www.youtube.com/watch?v=WflvuVPvCL8 - GitLab CI/CD - Как работают Runners, Установка своего SHELL GitLab Runner на Linux и Windows
     Mihail Kozlov - https://www.youtube.com/watch?v=uSTOerrWNaY&t=1s - GitLab CI/CD Runner простой проект
     Build With LaL - https://www.youtube.com/watch?v=Rvh7OZbDJ_o&t=577s - Register Docker Runner/Executor with GitLab Server to Run Pipelines
