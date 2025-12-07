@@ -20,7 +20,10 @@ THIS READ-ME IS WRITTEN ONLY FOR LOCAL SERVER USAGE WITH PUBLIC IPV4 ADDRESS
 
 3. Создай два проекта:
     - kuber-gitlab-api (be-devops так именно не назвал(он назвал k8s-connection), но это не важно, так как важно как он назвал второй проект k8s-connection для соединения с кубернет агентом)
-    - k8s-connection (так именно назвал be-devops https://www.youtube.com/watch?v=fwtxi_BRmt0&ab_channel=be-devops когда кубер кластер ставил - может можно и по своему, но я скопировал что бы все работало как у него)
+        склонируй его и наполни содержимым kuber-gitlab-api.
+        !!! у меня не получалось сперва скопировать, т к гитлаб при клонировании предлагал левые айпи, поэтому проверь что бы был публичный ipv4  
+            если не получается склонировать - есть урок у ADV-IT - https://www.youtube.com/watch?v=-j4hfcXSdws но я в итоге на токене настроил
+    - k8s-connection (можно потом, но так именно назвал be-devops https://www.youtube.com/watch?v=fwtxi_BRmt0&ab_channel=be-devops когда кубер кластер ставил - может можно и по своему, но я скопировал что бы все работало как у него)
 
 4. runner + registry
     ADV-IT - https://www.youtube.com/watch?v=WflvuVPvCL8 - GitLab CI/CD - Как работают Runners, Установка своего SHELL GitLab Runner на Linux и Windows
