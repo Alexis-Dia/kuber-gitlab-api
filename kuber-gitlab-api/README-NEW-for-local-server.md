@@ -34,6 +34,8 @@ THIS READ-ME IS WRITTEN ONLY FOR LOCAL SERVER USAGE WITH PUBLIC IPV4 ADDRESS
     Mihail Kozlov - https://www.youtube.com/watch?v=uSTOerrWNaY&t=1s - GitLab CI/CD Runner простой проект
     Build With LaL - https://www.youtube.com/watch?v=Rvh7OZbDJ_o&t=577s - Register Docker Runner/Executor with GitLab Server to Run Pipelines
     
+    - настрой примерное содержание /etc/hosts - как в примере - files-to-change/hosts
+
     - создай раннер в созданном проекте - kuber-gitlab-api
         Install GitLab Runner будет - в самом гитлабе инфа:
             # Download the binary for your system
