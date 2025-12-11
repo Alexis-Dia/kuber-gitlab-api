@@ -146,3 +146,40 @@ THIS READ-ME IS WRITTEN ONLY FOR LOCAL SERVER USAGE WITH PUBLIC IPV4 ADDRESS
    GitLab у меня не в k3s. и роутере не настроен или не поддерживается NAT loopback (hairpin NAT)
    я пришлю все файлы в папке k8s-files, секрет уже есть - app-secret
 
+
+
+
+
+helm repo add gitlab https://charts.gitlab.io
+helm repo update
+helm upgrade --install k8s-connection gitlab/gitlab-agent \
+--namespace gitlab-agent-k8s-connection \
+--create-namespace \
+--set image.tag=v18.6.0 \
+--set config.token=glagent-Zz8vmcTqo2dwhuNX79KBt286MQpwOjMH.01.0w04gvu12 \
+--set config.kasAddress=wss://elinext-ai-gitlab.tech/-/kubernetes-agent/
+
+helm upgrade --install k8s-connection gitlab/gitlab-agent \
+-n gitlab-agent-k8s-connection --reuse-values \
+--set hostAliases[0].ip=192.168.1.3 \
+--set hostAliases[0].hostnames[0]=elinext-ai-gitlab.tech
+
+kubectl -n gitlab-agent-k8s-connection rollout restart deploy/k8s-connection-gitlab-agent-v2
+kubectl -n gitlab-agent-k8s-connection logs -f deploy/k8s-connection-gitlab-agent-v2 --tail=200
+
+
+#for manual setting up right parameters in the inner gitlab db:
+
+sudo gitlab-rails runner -e production - <<'RUBY'
+r = Ci::Runner.find(6)
+r.active = true
+r.locked = false
+r.run_untagged = true
+# ключевое: разрешить protected ветки
+r.access_level = :ref_protected
+# ключевое: теги должны быть в GitLab, а не только в config.toml
+r.tag_list = "test"
+r.save!
+puts "Runner fixed: id=#{r.id} active=#{r.active} access_level=#{r.access_level} tags=#{r.tags.map(&:name).join(",")}"
+RUBY
+
