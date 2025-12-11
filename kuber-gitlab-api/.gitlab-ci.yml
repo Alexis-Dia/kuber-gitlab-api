@@ -17,7 +17,7 @@ variables:
 #    name: bitnami/kubectl:latest
 #    entrypoint: [""]
 #  script:
-#    - echo "Setting up Kubernetes context....."
+#    - echo "Setting up Kubernetes context......"
 #    #    - kubectl config set-credentials agent:6 --token="ci:6:${CI_JOB_TOKEN}"
 #    #    - kubectl config set-cluster gitlab --server="http://172.16.0.116:8088"
 #    #    - kubectl config set-context "$KUBE_CONTEXT" --cluster=gitlab --user="agent:6"
@@ -47,25 +47,23 @@ test_job_ci:
 
 test_job_dockerize:
   stage: dockerize
-  tags:
-    - test
-  image: alpine:3.18
+  tags: [test]
+  image: docker:27-cli
+  variables:
+    DOCKER_HOST: unix:///var/run/docker.sock
   script:
     - echo $CI_REGISTRY_IMAGE
     - echo $CI_REGISTRY_USER
     - echo $CI_REGISTRY_PASSWORD
     - echo $CI_REGISTRY
-    - apk add docker
-    #- telnet gitlab-site.online 5050
-    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
-    - ls -la
-    - ls -la
-    #- docker build -t "$CI_REGISTRY_IMAGE:${CI_COMMIT_SHA:0:8}" .
-    #- docker push "$CI_REGISTRY_IMAGE:${CI_COMMIT_SHA:0:8}"
-    #- docker login gitlab-site.online:5050
-    - docker build -t gitlab-site.online:5050/root/kuber-gitlab-api .
-    - docker push gitlab-site.online:5050/root/kuber-gitlab-api
-    #- docker push "$CI_REGISTRY_IMAGE:${CI_COMMIT_SHA:0:8}"
+    - docker version
+    - docker info | sed -n '/Insecure Registries/,+10p'
+    - echo "$CI_REGISTRY_PASSWORD" | docker login "$CI_REGISTRY" -u "$CI_REGISTRY_USER" --password-stdin
+    # Собираем сразу с двумя тегами
+    - docker build -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA" -t "$CI_REGISTRY_IMAGE:latest" .
+    # Пушим оба
+    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
+    - docker push "$CI_REGISTRY_IMAGE:latest"
   artifacts:
     expire_in: 10 days
     paths:
@@ -85,12 +83,15 @@ test_job_ci_deploy:
     name: bitnami/kubectl:latest
     entrypoint: [""]
   script:
-    - echo "Setting up Kubernetes context....."
+    - echo "Setting up Kubernetes context......."
     - kubectl config use-context $KUBE_CONTEXT
     - kubectl get nodes
     - echo "Deployment LOGIN-APP to K8S"
-    - ls $CI_PROJECT_DIR/k8s-files
+    - pwd $CI_PROJECT_DIR/k8s-files
     - kubectl apply -f $CI_PROJECT_DIR/k8s-files
+    - kubectl rollout restart deployment/login-app
+    - kubectl rollout status deployment/login-app
+    #- kubectl apply -f "$CI_PROJECT_DIR/k8s-files/"
     - kubectl get pods
     - kubectl get svc
-    - kubectl get svc login-svc #for getting external-ip/cats
+    #- kubectl get svc login-svc #for getting external-ip/cats
