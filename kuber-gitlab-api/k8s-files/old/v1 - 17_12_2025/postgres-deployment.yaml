@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:15
+          ports:
+            - containerPort: 5444
+          env:
+            - name: POSTGRES_DB
+              value: "cats-api"
+            - name: POSTGRES_USER
+              value: "admin"
+            - name: POSTGRES_PASSWORD
+              value: "admin"
+            - name: PGPORT  # ✅ Ensure PostgreSQL starts on port 5444
+              value: "5444"
+            - name: PGDATA  # 🔥 Specify the correct path for PostgreSQL data
+              value: "/var/lib/postgresql/data/pgdata"
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgres-storage
+      volumes:
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: postgres-pvc
