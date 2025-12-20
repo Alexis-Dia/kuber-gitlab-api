@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: login-app
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: login-app
+  template:
+    metadata:
+      labels:
+        app: login-app
+    spec:
+      imagePullSecrets:
+        - name: app-secret
+      containers:
+        - name: login-app
+          image: elinext-ai-gitlab.tech:5050/root/kuber-gitlab-api:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://postgres-service:5432/cats-api"
+            - name: SPRING_DATASOURCE_USERNAME
+              value: "admin"
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: "admin"

@@ -4,7 +4,7 @@ metadata:
   name: login-svc
   namespace: default
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   selector:
     app: login-app
   ports:
